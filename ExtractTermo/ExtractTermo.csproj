@@ -54,6 +54,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,12 +63,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSheets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSheets.Designer.cs">
+      <DependentUpon>DataSheets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orfans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orfans.Designer.cs">
+      <DependentUpon>Orfans.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataSheets.resx">
+      <DependentUpon>DataSheets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orfans.resx">
+      <DependentUpon>Orfans.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

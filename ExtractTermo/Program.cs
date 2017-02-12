@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ExtractTermo
 {
     class Program
     {
+        public const string ConnectionString = "Server=89.42.223.64;Port=3306;Database=rtermo93_termodinamic;Uid=rtermo93;Pwd=4aaa75e6f23ad;default command timeout=10240;";
+        [STAThread]
         static void Main(string[] args)
         {
+            /*
             string ConnectionString = "Server=89.42.223.64;Port=3306;Database=rtermo93_termodinamic;Uid=rtermo93;Pwd=4aaa75e6f23ad;default command timeout=10240;";
             MySqlConnection mcon = new MySqlConnection(ConnectionString);
             MySqlCommand mcom = new MySqlCommand();
@@ -39,6 +43,10 @@ namespace ExtractTermo
                 da2.WriteXml(Path.Combine("DATA", String.Format("{0}.xml", dr[0].ToString())));
                 mcon2.Close();
             }
+            */
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new DataSheets());
         }
     }
 }
