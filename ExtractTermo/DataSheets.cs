@@ -92,6 +92,10 @@ namespace ExtractTermo
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if(textBox2.Text != textBox3.Text)
+            {
+                DialogResult ans = MessageBox.Show("Nu ati modificat denumirea fisierului! Continuati?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
             FileInfo fi = new FileInfo(openFileDialog1.FileName);
             if(fi.Name != textBox2.Text)
                 File.Copy(openFileDialog1.FileName, openFileDialog1.FileName.Replace(fi.Name, textBox2.Text), true);

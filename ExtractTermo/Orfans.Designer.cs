@@ -101,6 +101,7 @@
             this.Controls.Add(this.checkedListBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Orfans";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Orfans";
             this.Load += new System.EventHandler(this.Orfans_Load);
             this.ResumeLayout(false);
