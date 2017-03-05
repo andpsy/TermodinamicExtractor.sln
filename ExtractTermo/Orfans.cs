@@ -70,7 +70,17 @@ namespace ExtractTermo
                 {
                     if (checkedListBox1.GetItemChecked(i))
                     {
-                        File.Move(Path.Combine(comboBox1.SelectedItem.ToString(), checkedListBox1.Items[i].ToString()), Path.Combine(dir, checkedListBox1.Items[i].ToString()));
+                        try
+                        {
+                            File.Move(Path.Combine(comboBox1.SelectedItem.ToString(), checkedListBox1.Items[i].ToString()), Path.Combine(dir, checkedListBox1.Items[i].ToString()));
+                        }
+                        catch {
+                            try
+                            {
+                                File.Delete(Path.Combine(comboBox1.SelectedItem.ToString(), checkedListBox1.Items[i].ToString()));
+                            }
+                            catch { }
+                        }
                     }
                 }
             }
