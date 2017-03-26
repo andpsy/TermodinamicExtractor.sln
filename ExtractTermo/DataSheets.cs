@@ -86,13 +86,13 @@ namespace ExtractTermo
                     MemoryStream ms = new MemoryStream(x);
                     img = Image.FromStream(ms);
                 }catch { img = Image.FromFile("minion.jpg"); }
-                ImageControl imgCtrl = new ImageControl();
+                ImageControl imgCtrl = new ImageControl(img);
                 imgCtrl.id = poza.PICTURE_ID;
                 imgCtrl.path = poza.PICTURE_PATH;
                 imgCtrl.extension = poza.PICTURE_EXTENSION;
                 imgCtrl.textBox1.Text = poza.PICTURE_DESCRIPTION;
                 imgCtrl.label1.Text = String.Format("{0} x {1}", img.Width, img.Height);
-                imgCtrl.pictureBox1.Image = ScaleImage(img, imgCtrl.pictureBox1);
+                //imgCtrl.pictureBox1.Image = ScaleImage(img, imgCtrl.pictureBox1);
                 imgCtrl.Top = 0; imgCtrl.Left = counterLocal * (imgCtrl.Width + 2);
                 panelPozeLocal.Controls.Add(imgCtrl);
                 //buttons events
@@ -139,13 +139,13 @@ namespace ExtractTermo
                 {
                     img = Image.FromStream(ms);
                 }catch { img = Image.FromFile("minion.jpg"); }
-                ImageControl imgCtrl = new ImageControl();
+                ImageControl imgCtrl = new ImageControl(img);
                 imgCtrl.id = Convert.ToInt32( dr["ID"]);
                 imgCtrl.path = dr["PATH"].ToString();
                 imgCtrl.extension = dr["EXTENSION"].ToString();
                 imgCtrl.textBox1.Text = dr["DESCRIPTION"].ToString();
                 imgCtrl.label1.Text = String.Format("{0} x {1}", img.Width, img.Height);
-                imgCtrl.pictureBox1.Image = ScaleImage(img, imgCtrl.pictureBox1);
+                //imgCtrl.pictureBox1.Image = ScaleImage(img, imgCtrl.pictureBox1);
                 imgCtrl.Top = 0; imgCtrl.Left = counterServer * (imgCtrl.Width + 2);
                 panelPozeServer.Controls.Add(imgCtrl);
 
@@ -322,8 +322,8 @@ namespace ExtractTermo
             forUndoing.Add(tStocServer.Text);
             foreach (ImageControl c in panelPozeServer.Controls)
             {
-                ImageControl imgCtrl = new ImageControl();
-                imgCtrl.pictureBox1.Image = c.pictureBox1.Image;
+                ImageControl imgCtrl = new ImageControl(c.image);
+                //imgCtrl.pictureBox1.Image = c.pictureBox1.Image;
                 imgCtrl.textBox1.Text = c.textBox1.Text;
                 imgCtrl.label1.Text = c.label1.Text;
                 imgCtrl.checkBox1.Checked = c.checkBox1.Checked;
@@ -343,12 +343,12 @@ namespace ExtractTermo
             foreach (ImageControl c in panelPozeLocal.Controls)
                 if (c.checkBox1.Checked)
                 {
-                    ImageControl imgCtrl = new ImageControl();
+                    ImageControl imgCtrl = new ImageControl(c.image);
                     imgCtrl.id = c.id;
                     imgCtrl.path = c.path;
                     imgCtrl.extension = c.extension;
                     imgCtrl.textBox1.Text = c.textBox1.Text;
-                    imgCtrl.pictureBox1.Image = c.pictureBox1.Image;
+                    //imgCtrl.pictureBox1.Image = c.pictureBox1.Image;
                     imgCtrl.label1.Text = c.label1.Text;
                     imgCtrl.checkBox1.Checked = c.checkBox1.Checked;
                     imgCtrl.Top = 0;
@@ -371,8 +371,8 @@ namespace ExtractTermo
             forUndoing.Add(tStocLocal.Text);
             foreach (ImageControl c in panelPozeLocal.Controls)
             {
-                ImageControl imgCtrl = new ImageControl();
-                imgCtrl.pictureBox1.Image = c.pictureBox1.Image;
+                ImageControl imgCtrl = new ImageControl(c.image);
+                //imgCtrl.pictureBox1.Image = c.pictureBox1.Image;
                 imgCtrl.textBox1.Text = c.textBox1.Text;
                 imgCtrl.label1.Text = c.label1.Text;
                 imgCtrl.checkBox1.Checked = c.checkBox1.Checked;
@@ -392,12 +392,12 @@ namespace ExtractTermo
             foreach (ImageControl c in panelPozeServer.Controls)
                 if (c.checkBox1.Checked)
                 {
-                    ImageControl imgCtrl = new ImageControl();
+                    ImageControl imgCtrl = new ImageControl(c.image);
                     imgCtrl.id = c.id;
                     imgCtrl.path = c.path;
                     imgCtrl.extension = c.extension;
                     imgCtrl.textBox1.Text = c.textBox1.Text;
-                    imgCtrl.pictureBox1.Image = c.pictureBox1.Image;
+                    //imgCtrl.pictureBox1.Image = c.pictureBox1.Image;
                     imgCtrl.label1.Text = c.label1.Text;
                     imgCtrl.checkBox1.Checked = c.checkBox1.Checked;
                     imgCtrl.Top = 0;
@@ -414,10 +414,10 @@ namespace ExtractTermo
                 panelPozeLocal.HorizontalScroll.Value = 0;
                 tNewImgLocal.Text = openFileDialog1.FileName;
                 Image img = Image.FromFile(openFileDialog1.FileName);
-                ImageControl imgCtrl = new ImageControl();
+                ImageControl imgCtrl = new ImageControl(img);
                 FileInfo fi = new FileInfo(openFileDialog1.FileName);
                 imgCtrl.extension = fi.Extension.Remove(0, 1);
-                imgCtrl.pictureBox1.Image = ScaleImage(img, imgCtrl.pictureBox1);
+                //imgCtrl.pictureBox1.Image = ScaleImage(img, imgCtrl.pictureBox1);
                 imgCtrl.label1.Text = String.Format("{0} x {1}", img.Width, img.Height);
                 imgCtrl.Top = 0;
                 imgCtrl.Left = panelPozeLocal.Controls.Count * (imgCtrl.Width + 2);
@@ -451,10 +451,10 @@ namespace ExtractTermo
                 panelPozeServer.HorizontalScroll.Value = 0;
                 tNewImgServer.Text = openFileDialog1.FileName;
                 Image img = Image.FromFile(openFileDialog1.FileName);
-                ImageControl imgCtrl = new ImageControl();
+                ImageControl imgCtrl = new ImageControl(img);
                 FileInfo fi = new FileInfo(openFileDialog1.FileName);
                 imgCtrl.extension = fi.Extension.Remove(0, 1);
-                imgCtrl.pictureBox1.Image = ScaleImage(img, imgCtrl.pictureBox1);
+                //imgCtrl.pictureBox1.Image = ScaleImage(img, imgCtrl.pictureBox1);
                 imgCtrl.label1.Text = String.Format("{0} x {1}", img.Width, img.Height);
                 imgCtrl.Top = 0;
                 imgCtrl.Left = panelPozeServer.Controls.Count * (imgCtrl.Width + 2);
@@ -584,7 +584,8 @@ namespace ExtractTermo
                 {
                     DataRow p = Tabele["pictures"].NewRow();
                     p["ID"] = c.id;
-                    p["PICTURE"] = Convert.ToBase64String(ImageToByteArray(c.pictureBox1.Image));
+                    //p["PICTURE"] = Convert.ToBase64String(ImageToByteArray(c.pictureBox1.Image));
+                    p["PICTURE"] = Convert.ToBase64String(ImageToByteArray(c.image));
                     p["DESCRIPTION"] = c.textBox1.Text;
                     p["EXTENSION"] = c.extension;
                     p["PATH"] = c.path;
@@ -673,7 +674,8 @@ namespace ExtractTermo
                         c.textBox1.Text,
                         c.path);
 
-                    byte[] data = ImageToByteArray(c.pictureBox1.Image);
+                    //byte[] data = ImageToByteArray(c.pictureBox1.Image);
+                    byte[] data = ImageToByteArray(c.image);
                     MySqlParameter blob = new MySqlParameter("@blobGatuMatii", MySqlDbType.Blob, data.Length);
                     blob.Value = data;
                     com.Parameters.Add(blob);
@@ -732,8 +734,11 @@ namespace ExtractTermo
         private void bSavePeServer_Click(object sender, EventArgs e)
         {
             {
-                DialogResult ans = MessageBox.Show("Nu ati modificat denumirea fisierului! Continuati?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (ans == DialogResult.No) return;
+                if (tDenumireFisierNou.Text == tDenumireFisierNouModificata.Text)
+                {
+                    DialogResult ans = MessageBox.Show("Nu ati modificat denumirea fisierului! Continuati?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (ans == DialogResult.No) return;
+                }
             }
             FileInfo fi = new FileInfo(openFileDialog1.FileName);
             if (fi.Name != tDenumireFisierNouModificata.Text)
